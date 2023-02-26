@@ -8,7 +8,7 @@ import java.sql.Timestamp
 @Entity
 data class Note(
     val title: String,
-    val context: String,
+    val content: String,
     val timestamp: Long,
     val colour: Int,
     @PrimaryKey val id: Int? = null
@@ -19,3 +19,5 @@ data class Note(
     }
 
 }
+
+class InvalidNoteException(message: String): Exception(message = message)
