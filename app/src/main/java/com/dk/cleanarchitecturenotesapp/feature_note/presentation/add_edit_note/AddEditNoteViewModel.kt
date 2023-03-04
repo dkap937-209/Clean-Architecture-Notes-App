@@ -1,4 +1,4 @@
-package com.dk.cleanarchitecturenotesapp.feature_note.presentation.add_edit_note.components
+package com.dk.cleanarchitecturenotesapp.feature_note.presentation.add_edit_note
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -21,14 +21,18 @@ class AddEditNoteViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val _noteTitle = mutableStateOf(NoteTextFieldState(
+    private val _noteTitle = mutableStateOf(
+        NoteTextFieldState(
         hint = "Enter title.."
-    ))
+    )
+    )
     val noteTitle: State<NoteTextFieldState> = _noteTitle
 
-    private val _noteContent = mutableStateOf(NoteTextFieldState(
+    private val _noteContent = mutableStateOf(
+        NoteTextFieldState(
         hint = "Enter content"
-    ))
+    )
+    )
     val noteContent: State<NoteTextFieldState> = _noteContent
 
     private val _noteColour = mutableStateOf<Int>(Note.noteColours.random().toArgb())
