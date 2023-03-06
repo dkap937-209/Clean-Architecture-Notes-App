@@ -19,7 +19,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.dk.cleanarchitecturenotesapp.feature_note.presentation.notes.components.NoteItem
 import com.dk.cleanarchitecturenotesapp.feature_note.presentation.notes.components.OrderSection
+import com.dk.cleanarchitecturenotesapp.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
+
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -36,7 +38,7 @@ fun NotesScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-
+                    navController.navigate(Screen.AddEditNotesScreen.route)
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
@@ -61,12 +63,12 @@ fun NotesScreen(
                 IconButton(onClick = {
                     viewModel.onEvent(NotesEvent.ToggleOrderSection)
                 }) {
-                    
+
                     Icon(
                         imageVector = Icons.Default.Sort,
                         contentDescription = "Sort"
                     )
-                    
+
                 }
             }
 
@@ -85,7 +87,7 @@ fun NotesScreen(
                     }
                 )
             }
-            
+
             Spacer(modifier = Modifier.height(16.dp))
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
@@ -96,7 +98,9 @@ fun NotesScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                //TODO: Implement routes
+                                navController.navigate(
+                                    Screen.AddEditNotesScreen.route + "?noteId=${note.id}&noteColour=${note.colour}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note = note))
@@ -114,6 +118,32 @@ fun NotesScreen(
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                 }
+//                items(state.notes){ note->
+//                    NoteItem(
+//                        note = note,
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//                            .clickable {
+//                                navController.navigate(
+//                                    Screen.AddEditNotesScreen.route+"?noteId=${note.id}&noteColour=${note.colour}"
+//                                )
+//                            },
+//                        onDeleteClick = {
+//                            viewModel.onEvent(NotesEvent.DeleteNote(note = note))
+//                            scope.launch {
+//                                val result = scaffoldState.snackbarHostState.showSnackbar(
+//                                    message = "Note delete",
+//                                    actionLabel = "Undo"
+//                                )
+//
+//                                if(result == SnackbarResult.ActionPerformed){
+//                                    viewModel.onEvent(NotesEvent.RestoreNote)
+//                                }
+//                            }
+//                        }
+//                    )
+//                    Spacer(modifier = Modifier.height(16.dp))
+//                }
             }
         }
     }

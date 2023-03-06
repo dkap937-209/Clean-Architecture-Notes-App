@@ -13,7 +13,7 @@ class NoteRepositoryImpl(
         return dao.getNotes()
     }
 
-    override suspend fun getNotById(id: Int): Note? {
+    override suspend fun getNoteById(id: Int): Note? {
         return dao.getNoteById(id = id)
     }
 

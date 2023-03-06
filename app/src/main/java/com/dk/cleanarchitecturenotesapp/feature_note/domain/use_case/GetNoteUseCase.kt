@@ -8,6 +8,6 @@ class GetNoteUseCase(
 ) {
 
     suspend operator fun invoke(id: Int): Note?{
-        return repository.getNotById(id = id)
+        return repository.getNoteById(id = id)
     }
 }

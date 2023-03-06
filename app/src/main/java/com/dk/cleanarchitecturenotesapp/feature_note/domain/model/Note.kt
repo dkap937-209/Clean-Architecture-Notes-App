@@ -3,7 +3,6 @@ package com.dk.cleanarchitecturenotesapp.feature_note.domain.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.dk.cleanarchitecturenotesapp.ui.theme.*
-import java.sql.Timestamp
 
 @Entity
 data class Note(
@@ -20,4 +19,4 @@ data class Note(
 
 }
 
-class InvalidNoteException(message: String): Exception(message = message)
+class InvalidNoteException(message: String): Exception(message)
