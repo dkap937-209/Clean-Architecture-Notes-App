@@ -10,7 +10,6 @@ import com.dk.cleanarchitecturenotesapp.feature_note.domain.use_case.NoteUseCase
 import com.dk.cleanarchitecturenotesapp.feature_note.domain.util.NoteOrder
 import com.dk.cleanarchitecturenotesapp.feature_note.domain.util.OrderType
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -53,7 +52,7 @@ class NotesViewModel @Inject constructor(
             is NotesEvent.RestoreNote -> {
                 viewModelScope.launch {
                     try{
-                        noteUseCases.addnote(note = recentlyDeletedNote?: return@launch)
+                        noteUseCases.addNoteUseCase(note = recentlyDeletedNote?: return@launch)
                         recentlyDeletedNote = null
                     }
                     catch (_: InvalidNoteException){
@@ -80,4 +79,3 @@ class NotesViewModel @Inject constructor(
     }
 
 }
-

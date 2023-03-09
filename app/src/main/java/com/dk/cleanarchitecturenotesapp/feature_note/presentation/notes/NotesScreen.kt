@@ -23,6 +23,7 @@ import com.dk.cleanarchitecturenotesapp.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 
+@OptIn(ExperimentalAnimationApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun NotesScreen(
@@ -99,7 +100,7 @@ fun NotesScreen(
                             .fillMaxWidth()
                             .clickable {
                                 navController.navigate(
-                                    Screen.AddEditNotesScreen.route + "?noteId=${note.id}&noteColour=${note.colour}"
+                                    Screen.AddEditNotesScreen.route + "?noteId=${note.id}&noteColour=${note.color}"
                                 )
                             },
                         onDeleteClick = {
@@ -118,34 +119,7 @@ fun NotesScreen(
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                 }
-//                items(state.notes){ note->
-//                    NoteItem(
-//                        note = note,
-//                        modifier = Modifier
-//                            .fillMaxWidth()
-//                            .clickable {
-//                                navController.navigate(
-//                                    Screen.AddEditNotesScreen.route+"?noteId=${note.id}&noteColour=${note.colour}"
-//                                )
-//                            },
-//                        onDeleteClick = {
-//                            viewModel.onEvent(NotesEvent.DeleteNote(note = note))
-//                            scope.launch {
-//                                val result = scaffoldState.snackbarHostState.showSnackbar(
-//                                    message = "Note delete",
-//                                    actionLabel = "Undo"
-//                                )
-//
-//                                if(result == SnackbarResult.ActionPerformed){
-//                                    viewModel.onEvent(NotesEvent.RestoreNote)
-//                                }
-//                            }
-//                        }
-//                    )
-//                    Spacer(modifier = Modifier.height(16.dp))
-//                }
             }
         }
     }
-
 }
