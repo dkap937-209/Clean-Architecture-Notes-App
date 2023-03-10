@@ -7,7 +7,6 @@ import androidx.compose.ui.unit.dp
 import com.dk.cleanarchitecturenotesapp.feature_note.domain.util.NoteOrder
 import com.dk.cleanarchitecturenotesapp.feature_note.domain.util.OrderType
 
-//TODO: need to fix this
 @Composable
 fun OrderSection(
     modifier: Modifier = Modifier,
@@ -38,25 +37,22 @@ fun OrderSection(
                 selected = noteOrder is NoteOrder.Colour,
                 onSelect = { onOrderChange(NoteOrder.Colour(noteOrder.orderType)) }
             )
+        }
 
-            Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
-            Row(modifier = Modifier.fillMaxWidth()) {
-                DefaultRadioButton(
-                    text = "Ascending",
-                    selected = noteOrder.orderType is OrderType.Ascending,
-                    onSelect = { onOrderChange(noteOrder.copy(OrderType.Ascending)) }
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                DefaultRadioButton(
-                    text = "Descending",
-                    selected = noteOrder.orderType is OrderType.Descending,
-                    onSelect = { onOrderChange(noteOrder.copy(OrderType.Descending)) }
-                )
-            }
-
+        Row(modifier = Modifier.fillMaxWidth()) {
+            DefaultRadioButton(
+                text = "Ascending",
+                selected = noteOrder.orderType is OrderType.Ascending,
+                onSelect = { onOrderChange(noteOrder.copy(OrderType.Ascending)) }
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            DefaultRadioButton(
+                text = "Descending",
+                selected = noteOrder.orderType is OrderType.Descending,
+                onSelect = { onOrderChange(noteOrder.copy(OrderType.Descending)) }
+            )
         }
     }
-
-
 }

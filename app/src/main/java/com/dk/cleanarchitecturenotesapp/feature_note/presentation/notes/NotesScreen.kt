@@ -21,8 +21,6 @@ import com.dk.cleanarchitecturenotesapp.feature_note.presentation.notes.componen
 import com.dk.cleanarchitecturenotesapp.feature_note.presentation.notes.components.OrderSection
 import com.dk.cleanarchitecturenotesapp.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
-
-
 @OptIn(ExperimentalAnimationApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -100,7 +98,7 @@ fun NotesScreen(
                             .fillMaxWidth()
                             .clickable {
                                 navController.navigate(
-                                    Screen.AddEditNotesScreen.route + "?noteId=${note.id}&noteColour=${note.color}"
+                                    Screen.AddEditNotesScreen.route + "?noteId=${note.id}&noteColour=${note.colour}"
                                 )
                             },
                         onDeleteClick = {

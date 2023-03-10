@@ -2,6 +2,8 @@ package com.dk.cleanarchitecturenotesapp.di
 
 import android.app.Application
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.dk.cleanarchitecturenotesapp.feature_note.data.data_source.NoteDatabase
 import com.dk.cleanarchitecturenotesapp.feature_note.data.repository.NoteRepositoryImpl
 import com.dk.cleanarchitecturenotesapp.feature_note.domain.repository.NoteRepository
@@ -24,7 +26,13 @@ object AppModule {
         app,
         NoteDatabase::class.java,
         NoteDatabase.DATABASE_NAME
-    ).build()
+    ).addMigrations(object: Migration(1, 2){
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("DROP TABLE IF EXISTS Note")
+            database.execSQL("CREATE TABLE IF NOT EXISTS note (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, content TEXT NOT NULL, colour INTEGER NOT NULL DEFAULT 0, timestamp INTEGER NOT NULL DEFAULT 0)")
+        }
+    }).
+    build()
 
     @Provides
     @Singleton

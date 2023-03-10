@@ -59,7 +59,7 @@ class AddEditNoteViewModel @Inject constructor(
                             isHintVisible = false
                         )
 
-                        _noteColour.value = note.color
+                        _noteColour.value = note.colour
                     }
                 }
             }
@@ -101,7 +101,7 @@ class AddEditNoteViewModel @Inject constructor(
                                 title = noteTitle.value.text,
                                 content = noteContent.value.text,
                                 timestamp = System.currentTimeMillis(),
-                                color = noteColour.value,
+                                colour = noteColour.value,
                                 id = currentNoteId
                             )
                         )

@@ -18,14 +18,14 @@ class GetNotesUseCase(
             when(noteOrder.orderType){
                 OrderType.Ascending -> {
                     when(noteOrder){
-                        is NoteOrder.Colour -> notes.sortedBy { it.color }
+                        is NoteOrder.Colour -> notes.sortedBy { it.colour }
                         is NoteOrder.Date -> notes.sortedBy { it.timestamp }
                         is NoteOrder.Title -> notes.sortedBy { it.title.lowercase() }
                     }
                 }
                 OrderType.Descending -> {
                     when(noteOrder){
-                        is NoteOrder.Colour -> notes.sortedByDescending { it.color }
+                        is NoteOrder.Colour -> notes.sortedByDescending { it.colour }
                         is NoteOrder.Date -> notes.sortedByDescending { it.timestamp }
                         is NoteOrder.Title -> notes.sortedByDescending { it.title.lowercase() }
                     }
