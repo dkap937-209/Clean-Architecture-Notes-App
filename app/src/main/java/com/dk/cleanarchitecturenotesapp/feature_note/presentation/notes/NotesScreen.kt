@@ -57,7 +57,8 @@ fun NotesScreen(
             ){
                 Text(
                     text = "Your Notes",
-                    style = MaterialTheme.typography.h4
+                    style = MaterialTheme.typography.h4,
+                    modifier = Modifier.padding(15.dp)
                 )
                 IconButton(onClick = {
                     viewModel.onEvent(NotesEvent.ToggleOrderSection)
@@ -74,7 +75,7 @@ fun NotesScreen(
             AnimatedVisibility(
                 visible = state.isOrderSectionVisible,
                 enter = fadeIn() + slideInVertically(),
-                exit = fadeOut() + slideOutVertically()
+                exit = fadeOut() + slideOutVertically(),
             ){
                 OrderSection(
                     modifier = Modifier
